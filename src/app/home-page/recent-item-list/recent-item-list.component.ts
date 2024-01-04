@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { PaginatedSearchOptions } from '../../shared/search/models/paginated-search-options.model';
 import { fadeIn, fadeInOut } from '../../shared/animations/fade';
 import { RemoteData } from '../../core/data/remote-data';
@@ -18,7 +18,7 @@ import { APP_CONFIG, AppConfig } from '../../../config/app-config.interface';
 import { isPlatformBrowser } from '@angular/common';
 import { setPlaceHolderAttributes } from '../../shared/utils/object-list-utils';
 import { DSpaceObjectType } from '../../core/shared/dspace-object-type.model';
-
+import { UsageReportDataService } from 'src/app/core/statistics/usage-report-data.service';
 @Component({
   selector: 'ds-recent-item-list',
   templateUrl: './recent-item-list.component.html',
@@ -40,6 +40,8 @@ export class RecentItemListComponent implements OnInit {
  */
   viewMode = ViewMode.ListElement;
 
+  @Input() showViewModes = true; //kware-edit
+  @Input() viewModeList: ViewMode[]; //kware-edit
   private _placeholderFontClass: string;
 
   constructor(
@@ -53,7 +55,7 @@ export class RecentItemListComponent implements OnInit {
 
     this.paginationConfig = Object.assign(new PaginationComponentOptions(), {
       id: 'hp',
-      pageSize: environment.homePage.recentSubmissions.pageSize,
+      pageSize: 10,
       currentPage: 1,
       maxSize: 1
     });
@@ -70,7 +72,8 @@ export class RecentItemListComponent implements OnInit {
         pagination: this.paginationConfig,
         dsoTypes: [DSpaceObjectType.ITEM],
         sort: this.sortConfig,
-      }),
+        query:'dspace.entity.type:Publication'
+      },),
       undefined,
       undefined,
       undefined,
@@ -78,6 +81,7 @@ export class RecentItemListComponent implements OnInit {
     ).pipe(
       toDSpaceObjectListRD()
     ) as Observable<RemoteData<PaginatedList<Item>>>;
+
   }
 
   ngOnDestroy(): void {

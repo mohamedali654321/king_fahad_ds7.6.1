@@ -27,6 +27,7 @@ export class PublicationCategoryComponent implements OnInit, OnDestroy {
     'All': { icon: 'fa-solid fa-book-open' },
     'Article | مقال': { icon: 'fa-solid fa-newspaper' },
     'Book | كتاب': { icon: 'fa-solid fa-book' },
+    'Translated Book | كتاب مترجم': { icon: 'fa-solid fa-book' },
     'Image | صورة': { icon: 'fa-solid fa-image' },
     'Research and Studies | بحث ودراسات': { icon: 'fa-solid fa-magnifying-glass' },
     'Research | بحث': { icon: 'fa-solid fa-magnifying-glass' },
@@ -82,7 +83,7 @@ export class PublicationCategoryComponent implements OnInit, OnDestroy {
       new BrowseEntrySearchOptions('itemtype')
     ).subscribe(entities => {
       this.pubCategories = entities?.payload?.page;
-      this.pubCategories?.unshift({ type: 'browseEntry', value: 'All' });
+      this.pubCategories.unshift({ type: 'browseEntry', value: 'All' });
       this.route.queryParams
         .subscribe(params => {
           const currentIndex = entities?.payload?.page.findIndex(cat => cat.value === params.subCategory);

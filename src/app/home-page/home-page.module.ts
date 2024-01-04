@@ -14,6 +14,11 @@ import { JournalEntitiesModule } from '../entity-groups/journal-entities/journal
 import { ResearchEntitiesModule } from '../entity-groups/research-entities/research-entities.module';
 import { ThemedTopLevelCommunityListComponent } from './top-level-community-list/themed-top-level-community-list.component';
 import { TopSectionComponent } from './top-section/top-section.component';
+// import { CategoryItemsComponent } from './browse-categories/items/category-items.component';
+// import { BrowseCategoryComponent } from './browse-categories/category/browse-category.component';
+// import { CategoryItemComponent } from './browse-categories/item/category-item.component';
+// import { BrowseSubCategoriesComponent } from './browse-categories/browse-sub-categories/browse-sub-categories.component';
+// import { BrowseSubCategoryComponent } from './browse-categories/browse-sub-categories/sub-category/browse-sub-category.component';
 import { BrowseCategoriesComponent } from './browse-categories/browse-categories.component';
 import { CategoriesComponent } from './browse-categories/components/categories/categories.component';
 import { CategoryComponent } from './browse-categories/components/category/category.component';
@@ -34,6 +39,11 @@ const DECLARATIONS = [
     CategoryComponent,
     CategoryContentComponent,
     PublicationCategoryComponent,
+  // BrowseCategoryComponent,
+  // CategoryItemsComponent,
+  // CategoryItemComponent,
+  // BrowseSubCategoriesComponent,
+  // BrowseSubCategoryComponent
 ];
 
 @NgModule({
@@ -47,6 +57,7 @@ const DECLARATIONS = [
   ],
   declarations: [
     ...DECLARATIONS,
+    
   ],
   exports: [
     ...DECLARATIONS,

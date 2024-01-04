@@ -23,6 +23,8 @@
       <!-- <ds-type-badge *ngIf="showLabel" [object]="dso"></ds-type-badge> -->
       <div class="d-flex" style="justify-content: space-between;">
         <div class="label_dage" >
+          <span [attr.title]="'item.search.fundingDate' | translate" class="badge badge-pill badge-info" style="background-color: rgb(106, 163, 213) !important;color: #FFF; margin-bottom: -2px;" *ngIf="dso.hasMetadata('dc.date.copy') || dso.hasMetadata('dc.date.issuedhijri')" >{{firstMetadataValue('dc.date.copy') ? firstMetadataValue('dc.date.copy') : firstMetadataValue('dc.date.issuedhijri') }}</span>
+
           <ds-type-badge  *ngIf="showLabel" [object]="dso"></ds-type-badge> 
        </div>
        <div>

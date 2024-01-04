@@ -85,12 +85,17 @@ export class SearchFormComponent implements OnChanges {
       value: 'dc.contributor.author'
     },
     {
-      label: 'query.filter.publisher',
-      value: 'dc.publisher'
+      label: 'query.filter.copier',
+      value: 'dc.contributor.copier'
     },
     {
       label: 'query.filter.subject',
       value: 'dc.subject'
+    },
+
+    {
+      label: 'query.filter.holding',
+      value: 'dc.relation.holding'
     },
   ];
   /** kware end edit */

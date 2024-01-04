@@ -48,6 +48,7 @@ export class SearchResultGridElementComponent<T extends SearchResult<K>, K exten
       this.dso = this.object.indexableObject;
       this.isCollapsed$ = this.isCollapsed();
       this.linkService.resolveLink<Item>(this.dso, followLink('thumbnail')); //kware-edit
+      this.linkService.resolveLink<Item>(this.dso, followLink('version')); //kware-edit
     }
 
     this.dso.metadataAsList.filter( md=>{md && md.key?.includes('relation.isPublicationOf'+this.dso.firstMetadataValue('dspace.entity.type')) && !(md.key?.includes('latestForDiscovery'))? this.publicationRelation.push(md) : null});

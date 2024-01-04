@@ -47,6 +47,15 @@ export class ItemSearchResultGridElementComponent extends SearchResultGridElemen
    arabicLang: boolean;
    englishLang: boolean;
 
+
+   currentVersion:boolean;
+   versionId;
+   special = ['zeroth','first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'nineteenth'];
+   deca = ['twent', 'thirt', 'fort', 'fift', 'sixt', 'sevent', 'eight', 'ninet'];
+   specialAr=['صفر','الأول', 'الثاني', 'الثالث', 'الرابع', 'الخامس', 'السادس', 'السابع', 'الثامن', 'التاسع', 'العاشر', 'الحادي عشر', 'الثاني عشر', 'لثالث عشر', 'الرابع عشر', 'الخامس عشر', 'السادس عشر', 'السابع عشر', 'الثامن عشر', 'التاسع عشر'];
+   decaAr = ['العشرين', 'الثلاثين', 'الأربعين', 'الخمسين', 'الستين', 'السبعين', 'الثمانين', 'التسعين'];
+
+
   constructor(
     public dsoNameService: DSONameService,
     protected truncatableService: TruncatableService,
@@ -63,6 +72,11 @@ export class ItemSearchResultGridElementComponent extends SearchResultGridElemen
     this.itemPageRoute = getItemPageRoute(this.dso);
     this.dsoTitle = this.dsoNameService.getName(this.dso);
     this.linkService.resolveLink<Item>(this.dso, followLink('thumbnail')); //kware-edit
+    this.linkService.resolveLink<Item>(this.dso, followLink('version')); //kware-edit
+    this.currentVersion= document.URL.includes('/entities/publication/');
+    if(this.currentVersion){
+     this.versionId = document.URL.split('/entities/publication/')[1];
+    }
 
          // this.keywords=this.dso.allMetadataValues('dc.subject').slice(0,3); //kwar-edit
          let  arabic = /[\u0600-\u06FF]/;
@@ -182,5 +196,19 @@ export class ItemSearchResultGridElementComponent extends SearchResultGridElemen
        else return null;
        
          }
+
+         stringifyNumber(n) {
+          if(this.localeAr){
+            if (n < 20) return this.specialAr[n];
+            if (n%10 === 0) return this.decaAr[Math.floor(n/10)-2] + 'ieth';
+            return this.decaAr[Math.floor(n/10)-2] + 'y-' + this.special[n%10];
+          }
+          else{
+            if (n < 20) return this.special[n];
+            if (n%10 === 0) return this.deca[Math.floor(n/10)-2] + 'ieth';
+            return this.deca[Math.floor(n/10)-2] + 'y-' + this.special[n%10];
+          }
+         
+        }
   // end kware edit
 }

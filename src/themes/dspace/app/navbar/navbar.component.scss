@@ -2,7 +2,7 @@ nav.navbar {
   align-items: baseline;
 
   .navbar-inner-container {
-    border-top: 1px var(--ds-header-navbar-border-top-color) solid;
+    // border-top: 1px var(--ds-header-navbar-border-top-color) solid;
   }
 }
 
@@ -171,14 +171,14 @@ a:visited {
 
   ::ng-deep .scrolledY{
 
-    background-color: #007d65 !important;
+   background-color: #007d65 !important;
     transition: all .4s ease-in-out;
     height: 67px !important;
     position: fixed !important;
     width: 100%;
     z-index: 999;
     .navbar-nav {
-      background-color: #007d65 !important;
+       background-color: #007d65 !important;
     }
 
     .navbar-nav {

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, OnDestroy, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, OnDestroy, Inject, Input } from '@angular/core';
 
 import { BehaviorSubject, combineLatest as observableCombineLatest, Subscription } from 'rxjs';
 
@@ -13,6 +13,7 @@ import { hasValue } from '../../shared/empty.util';
 import { switchMap } from 'rxjs/operators';
 import { PaginationService } from '../../core/pagination/pagination.service';
 import { AppConfig, APP_CONFIG } from 'src/config/app-config.interface';
+import { ViewMode } from 'src/app/core/shared/view-mode.model';
 
 /**
  * this component renders the Top-Level Community list
@@ -50,6 +51,9 @@ export class TopLevelCommunityListComponent implements OnInit, OnDestroy {
    * The subscription to the observable for the current page.
    */
   currentPageSubscription: Subscription;
+
+  @Input() showViewModes = true; //kware-edit
+  @Input() viewModeList: ViewMode[]; //kware-edit
 
   constructor(
     @Inject(APP_CONFIG) protected appConfig: AppConfig,

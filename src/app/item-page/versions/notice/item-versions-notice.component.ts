@@ -90,6 +90,10 @@ export class ItemVersionsNoticeComponent implements OnInit {
     }
   }
 
+
+  goToPart(){
+    document.getElementById("versionArea").scrollIntoView({behavior: "smooth"})
+    }
   /**
    * Get the item page url
    * @param item The item for which the url is requested

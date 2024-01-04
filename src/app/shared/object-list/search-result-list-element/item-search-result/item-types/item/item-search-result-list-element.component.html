@@ -15,10 +15,10 @@
   <div [ngClass]="showThumbnails ? 'col-9' : 'col-md-12'">
     <div class="d-flex">
       <div class="label_dage" >
-        <span class="badge badge-info" style="background-color: #e8ebf3 !important;color: #000; margin-bottom: -2px;" *ngIf="dso.hasMetadata('dc.date.issued') || dso.hasMetadata('dc.date.issuedhijri')" >{{firstMetadataValue('dc.date.issued') ? firstMetadataValue('dc.date.issued') : firstMetadataValue('dc.date.issuedhijri') }}</span>
+        <span [attr.title]="'item.search.copyDate' | translate" class="badge badge-pill badge-info" style="background-color: rgb(106, 163, 213) !important;color: #fff; margin-bottom: -2px;" *ngIf="dso.hasMetadata('dc.date.copy') || dso.hasMetadata('dc.date.issuedhijri')" >{{firstMetadataValue('dc.date.copy') ? firstMetadataValue('dc.date.copy') : firstMetadataValue('dc.date.issuedhijri') }}</span>
 
         <!-- <ds-type-badge  *ngIf="showLabel" [object]="dso"></ds-type-badge> -->
-        <span class="badge badge-info" style="background-color: #007d65  !important;color: #FFF; margin-bottom: -2px;" *ngIf="dso.hasMetadata('dc.type')" >{{firstMetadataValue('dc.type') | kwareTranslate}}</span>
+        <span class="badge badge-pill badge-info" style="background-color: #007d65  !important;color: #FFF; margin-bottom: -2px;" *ngIf="dso.hasMetadata('dc.type')" >{{firstMetadataValue('dc.type') | kwareTranslate}}</span>
         <ds-access-status-badge [object]="dso" class="pl-1"></ds-access-status-badge>
      </div>
       
@@ -42,12 +42,32 @@
           <span *ngIf="dso.allMetadata(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).length > 0" class="item-list-authors">
             <span *ngFor="let author of authors;let last=last;">
               <!-- <span ><i class="fa-regular fa-user">&nbsp;</i>{{convertComma((author | kwareTranslate))}}</span> -->
-              <span ><i class="fa-regular fa-user">&nbsp;</i>{{convertComma(((author?.split(",")[0] | kwareTranslate) + ',' +  (author?.split(",")[1] | kwareTranslate)))}}</span>
+              <span [attr.title]="'item.search.author' | translate" ><i class="fa-regular fa-user">&nbsp;</i>{{convertComma(((author?.split(",")[0] | kwareTranslate) + ',' +  (author?.split(",")[1] | kwareTranslate)))}}</span>
               <span *ngIf="!last">&nbsp;&nbsp;</span>
           </span>
           </span>
         </ds-truncatable-part>
+
+
+        <ds-truncatable-part *ngIf=" dso.hasMetadata('dc.contributor.copier') "   [id]="dso.id" [minLines]="1">
+
+          <p class="item-authors card-text text-muted">
+            <span *ngFor="let advisor of dso.allMetadataValues('dc.contributor.copier');let last=last;">
+              <!-- <span ><i class="fa-regular fa-user">&nbsp;</i>{{convertComma((author | kwareTranslate))}}</span> -->
+              <span [attr.title]="'item.search.copier' | translate"><i class="fa-solid fa-user-tie">&nbsp;</i>{{convertComma(((advisor | kwareTranslate)))}}</span>
+
+              <span *ngIf="!last">&nbsp;&nbsp;</span>
+          </span>
+          </p>
+        </ds-truncatable-part>
     </span>
+
+
+    <ds-truncatable-part *ngIf=" dso.hasMetadata('dc.relation.holding') "   [id]="dso.id" [minLines]="1">
+      <p  class="item-abstract card-text">
+          <span style="color: #007d65 !important; font-size: 1rem !important;" [innerHTML]="dso.firstMetadataValue('dc.relation.holding') | kwareTranslate"></span>
+      </p>
+  </ds-truncatable-part>
      <!-- kware-edit keywords show -->
 
   <div *ngIf="dso.hasMetadata('dc.subject')">

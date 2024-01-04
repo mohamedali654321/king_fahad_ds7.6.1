@@ -5,7 +5,7 @@
 <ng-container class="" *ngVar="(itemsRD$ | async) as itemRD">
     <div  class="mt-4 "  *ngIf=" itemRD?.length > 0" >
             
-            <h2 style="color: #907d4f;"  class="container" >
+            <h2 style="color: rgb(144, 125, 79) !important;"  class="container" >
              {{'home.view-submissions.head' | translate}}</h2>
              <div class="card-columns row" >
               <div class="card-column col col-sm-6 col-lg-4"  *ngFor="let item of itemRD.slice(0,5)"  @fadeIn>

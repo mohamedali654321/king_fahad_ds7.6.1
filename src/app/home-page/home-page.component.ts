@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -13,6 +13,7 @@ export class HomePageComponent implements OnInit {
 
   site$: Observable<Site>;
   recentSubmissionspageSize: number;
+  @Input() showScopeSelector = true; //kware-edit
   constructor(
     private route: ActivatedRoute,
   ) {
@@ -23,5 +24,6 @@ export class HomePageComponent implements OnInit {
     this.site$ = this.route.data.pipe(
       map((data) => data.site as Site),
     );
+   
   }
 }

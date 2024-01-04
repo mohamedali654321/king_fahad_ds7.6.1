@@ -5,7 +5,7 @@
       [showMessage]="true"
     ></ds-themed-loading>
   </div>
-  <h4 *ngIf="(objects | async)?.payload?.page.length" class="recent-head" style="color: #907d4f !important;"> {{'home.recent-submissions.items' | translate}}</h4>
+  <h4 *ngIf="(objects | async)?.payload?.page.length" class="recent-head" style="color: rgb(144, 125, 79) !important;"> {{'home.recent-submissions.items' | translate}}</h4>
 
   <ds-viewable-collection
     [config]="paginationConfig"

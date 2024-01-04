@@ -48,6 +48,8 @@ import { WorkspaceItem } from '../../core/submission/models/workspaceitem.model'
 import { WorkspaceitemDataService } from '../../core/submission/workspaceitem-data.service';
 import { WorkflowItemDataService } from '../../core/submission/workflowitem-data.service';
 import { ConfigurationDataService } from '../../core/data/configuration-data.service';
+import { DSpaceObjectDataService } from 'src/app/core/data/dspace-object-data.service';
+import { ViewMode } from 'src/app/core/shared/view-mode.model';
 
 @Component({
   selector: 'ds-item-versions',
@@ -167,6 +169,20 @@ export class ItemVersionsComponent implements OnDestroy, OnInit {
   canCreateVersion$: Observable<boolean>;
   createVersionTitle$: Observable<string>;
 
+  itemsIds = [];
+  itemsIds$ = new BehaviorSubject<any[]>([]);
+  data = new BehaviorSubject<any[]>([]);
+  itemsRD$ =new BehaviorSubject<any[]>([]);
+
+  itemRD$: Observable<RemoteData<PaginatedList<Item>>>;
+
+  allVersionsRd$ = new BehaviorSubject<any[]>([]);
+
+  viewMode = ViewMode.GridElement;
+
+  @Input() showViewModes = true; //kware-edit
+  @Input() viewModeList: ViewMode[]; //kware-edit
+
   constructor(private versionHistoryService: VersionHistoryDataService,
               private versionService: VersionDataService,
               private itemService: ItemDataService,
@@ -181,6 +197,7 @@ export class ItemVersionsComponent implements OnDestroy, OnInit {
               private workspaceItemDataService: WorkspaceitemDataService,
               private workflowItemDataService: WorkflowItemDataService,
               private configurationService: ConfigurationDataService,
+              protected dsoService: DSpaceObjectDataService,
   ) {
   }
 
@@ -429,6 +446,11 @@ export class ItemVersionsComponent implements OnDestroy, OnInit {
       }),
       getFirstCompletedRemoteData(),
     ).subscribe((res: RemoteData<PaginatedList<Version>>) => {
+      res.payload.page.forEach((page, index) => {
+        page.item.pipe(getFirstSucceededRemoteDataPayload()).subscribe((data) => {
+        this.itemsIds$.next(this.itemsIds$.getValue().concat([data]))
+        })
+      })
       this.versionsRD$.next(res);
     });
   }
@@ -526,8 +548,29 @@ export class ItemVersionsComponent implements OnDestroy, OnInit {
         })
       );
     }
+
+    // this.itemsIds$.subscribe((items) => {
+    //   let arrIds=[];
+    //   items.forEach((item) =>{
+    //  arrIds.push(item.uuid);
+    //   });
+    //   arrIds =this.removeDuplicates(arrIds);
+    //   this.removeDuplicates(arrIds).forEach((id) =>{
+    //  this.dsoService.findById(id).pipe(getFirstSucceededRemoteData()).subscribe((item)=>{
+    // console.log(item.payload.id) 
+    // if(item.payload?.id === id){
+    //   this.itemsRD$.next(this.itemsRD$.getValue().concat([item]))
+    // } 
+  
+    //  })
+    //   })
+    // })
   }
 
+  removeDuplicates(arr) {
+    return arr.filter((item,
+        index) => arr.indexOf(item) === index);
+}
   ngOnDestroy(): void {
     this.cleanupSubscribes();
     this.paginationService.clearPagination(this.options.id);

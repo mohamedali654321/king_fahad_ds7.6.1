@@ -933,12 +933,12 @@ h4{
 
   ::ng-deep html[dir="rtl"] ds-pagination {
 
-    @media (max-width:980px) {
+   
       #paginationControlsDropdownMenu{
         transform: translate(1px, 38px) !important;
       }
 
-    }
+    
 
   }
 
@@ -1277,9 +1277,9 @@ h4{
 
   justify-items: center;
 
-  span{
-    padding: 5px !important;
-  }
+  // span{
+  //   padding: 5px !important;
+  // }
 
 }
 
@@ -1860,14 +1860,14 @@ color: #FFF !important;
 
 
 ::ng-deep html[dir="ltr"]{
-  .label_dage span{
-    padding: 2.5px !important;
+  // .label_dage span{
+  //   padding: 3.5px !important;
     
-  }
+  // }
 
 
 ds-top-section .label_dage{
-  gap: 0px !important;
+  gap: 5px !important;
   display: initial !important;
 }
 
@@ -2384,7 +2384,7 @@ ds-listable-object-component-loader .card-title {
   ::ng-deep html[dir="rtl"] {
     .fixed-height{
       position: relative;
-      height: 310px !important;
+      height: 360px !important;
   }
   
   .fixed-bottom-content{
@@ -2396,7 +2396,7 @@ ds-listable-object-component-loader .card-title {
   ::ng-deep ds-top-section{
     .fixed-height{
       position: relative;
-      height: 290px !important;
+      height: 320px !important;
     }
     
     .fixed-bottom{
@@ -2423,7 +2423,7 @@ ds-listable-object-component-loader .card-title {
   ::ng-deep ds-top-section{
     .fixed-height{
       position: relative;
-      height: 290px !important;
+      height: 320px !important;
     }
     
     .fixed-bottom{
@@ -2619,7 +2619,7 @@ ds-listable-object-component-loader .card-title {
   }
   ::ng-deep html[dir="ltr"] {
     ds-footer img {
-      margin-right: -30px !important;
+      margin-right: 0px !important;
     }
   }
  
@@ -3183,5 +3183,22 @@ display: block;
       ds-browse-categories .browse-category-link-circle{
         border: 1px solid #907d4f !important;
       }
+
+      ds-truncatable-part{
+        .item-city{
+          font-size: .9rem !important;
+        }
+        .item-country{
+          font-size: .9rem !important;
+        }
+      }
    
+    }
+
+
+    ::ng-deep ds-item-versions{
+
+      div.card-columns.row{
+       flex-direction: row-reverse ;
+     }
     }

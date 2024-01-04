@@ -5660,9 +5660,9 @@
 'orgunit.page.issuedhijri':'تاريخ التأسيس الهجري',
 "access-status.metadata.only.listelement.badge": "البيانات الوصفية فقط",
 
-   "access-status.open.access.listelement.badge": "حر الوصول " ,
+   "access-status.open.access.listelement.badge": "مفتوح" ,
 
-   "access-status.restricted.listelement.badge": "مقيد الوصول",
+   "access-status.restricted.listelement.badge": "مقيد",
 
    "access-status.unknown.listelement.badge": "غير معروف" ,
 
@@ -6576,8 +6576,8 @@
   "search.filters.applied.f.has_content_in_access_status": "أنواع الوصول",
 
     "search.filters.has_content_in_access_status.metadata.only": "البيانات الوصفية فقط",
-   "search.filters.has_content_in_access_status.open.access": "حر الوصول " ,
-   "search.filters.has_content_in_access_status.restricted": "مقيد الوصول",
+   "search.filters.has_content_in_access_status.open.access": "مفتوح" ,
+   "search.filters.has_content_in_access_status.restricted": "مقيد",
    "search.filters.has_content_in_access_status.unknown": "غير معروف" ,
    "search.filters.has_content_in_access_status.embargo": "محظور" ,
  "item.page.doi":"معرف الكائن الرقمي",
@@ -6681,7 +6681,7 @@
 "repository.title.prefix": "المستودع الرقمي في مكتبة الملك فهد الوطنية :: ",
 
   "repository.title.prefixDSpace": "المستودع الرقمي في مكتبة الملك فهد الوطنية :: ",
-  'footer.link.copyrights':"© 2023 جميع الحقوق محفوظة لمكتبة الملك فهد الوطنية",
+  'footer.link.copyrights':"جميع الحقوق محفوظة لمكتبة الملك فهد الوطنية",
 'footer.top.content1':' مؤسسة تقنية المعارف',
 
 "form.create": "إنشاء",
@@ -6711,5 +6711,83 @@
 'footer.important.links1':'خريطة الموقع',
 'footer.important.links2':'اسئلة شائعة',
 'footer.important.links3':'التبليغ عن حادثة أمن معلومات',
+
+
+
+   'item.page.isbn':'ردمك',
+   'item.page.translator':'المترجمين',
+   'item.page.reviewer':'المراجعين',
+   'item.page.presenter':'المقدمين',
+
+   "search.filters.applied.f.translator": "المترجم",
+   "search.filters.applied.f.reviewer": "المراجع",
+   "search.filters.applied.f.presenter": "المقدم",
+
+   'item.page.relationships.isPublisherOfPublication':'المنشورات',
+   'relationships.isPresenterOf.Person':'المقدمين',
+   'relationships.isReviewerOf.Person':'المراجعين',
+    'relationships.isTranslatorOf.Person':'المترجمين',
+
+"submission.sections.describe.relationship-lookup.title.isTranslatorOfPublication":"المترجمين",
+"submission.sections.describe.relationship-lookup.search-tab.tab-title.isTranslatorOfPublication":"المترجمين المحليين ({{ count }})",
+
+"submission.sections.describe.relationship-lookup.title.isReviewerOfPublication":"المراجعين",
+"submission.sections.describe.relationship-lookup.search-tab.tab-title.isReviewerOfPublication":"المراجعين المحليين ({{ count }})",
+
+"submission.sections.describe.relationship-lookup.title.isPresenterOfPublication":"المقدمين",
+"submission.sections.describe.relationship-lookup.search-tab.tab-title.isPresenterOfPublication":"المقدمين المحليين ({{ count }})",
+
+'publication.page.publisherArabicEdition':'الناشر للطبعة العربية',
+'relationships.isArabicPublisherOf.OrgUnit':'الناشرين للطبعة العربية',
+'item.page.relationships.isArabicPublisherOfPublication':'الناشرين للطبعة العربية',
+"submission.sections.describe.relationship-lookup.title.isArabicPublisherOfPublication":'الناشرين للطبعة العربية',
+"submission.sections.describe.relationship-lookup.search-tab.tab-title.isArabicPublisherOfPublication":"الناشرين للطبعة العربية المحليين ({{ count }})",
+'publication.page.source':'المكتبة المقتنية',
+ "vocabulary-treeview.search.form.add": "إضافة",  
+
+ "item.version.create.modal.submitted.header": "يتم الآن إنشاء إصدار جديد...",
+
+   "item.version.create.modal.submitted.text": "يتم الآن إنشاء الإصدار الجديد. قد يستغرق هذا بعض الوقت إذا كان العنصر يحتوي على الكثير من العلاقات.",
+
+   'dsapce.object.collection, community':'مجتمع ، حاوية',
+   'dsapce.object.item':'مادة',
+'dsapce.object.collection':'حاوية',
+'dsapce.object.community':'مجتمع',
+'dsapce.object.community, collection':'مجتمع ، حاوية',
+
+'statistics.label.views':'المشاهدات',
+
+
+
+'item.page.ownership':'تبعية المخطوط',
+
+  "search.filters.filter.ownership.head":'تبعية المخطوط',
+  "search.filters.filter.ownership.label": "بحث نوع تبعية المخطوط",
+  "search.filters.filter.ownership.placeholder": "نوع تبعية المخطوط ",
+  "search.filters.applied.f.ownership":'تبعية المخطوط',
+
+  'item.page.holdingLibrary':'المكتبة المقتنية',
+  "search.filters.applied.f.holdingLibrary":'المكتبة المقتنية',
+
+  "search.filters.filter.holdingLibrary.head":'المكتبة المقتنية',
+  "search.filters.filter.holdingLibrary.label": "بحث اسم المكتبة المقتنية",
+  "search.filters.filter.holdingLibrary.placeholder": 'المكتبة المقتنية',
+  'query.filter.holding':'المكتبة المقتنية',
+  'query.filter.copier':'الناسخ',
+
+  'search.results.current.edition':'النسخة المعروضة حاليا',
+
+  "item.version.history.selected.alert": "مقتنيات من نفس المخطوطة في مكتبات متعددة",
+
+  "item.version.notice": "هناك صور أخرى من نفس المخطوطة. يمكن الوصول الى تلك الصور من ",
+
+  'item.version.notice.here':'هنا.',
+
+
+  'item.search.copier':'ناسخ',
+'item.search.copyDate':'تاريخ النسخ',
+'item.search.fundingDate':'تاريخ التأسيس',
+
+  
 }
 

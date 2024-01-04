@@ -15,6 +15,7 @@
       background-position: right, left;
       background-size: 100% 100%;
     // margin-bottom: 100px;
+    margin-top: -24px;
 
     .container {
       position: relative;
@@ -69,4 +70,10 @@
   }
 }
 
+@media (max-width: 767px){
 
+  div.background-image
+{
+  margin-top: -40px !important;
+}
+}
