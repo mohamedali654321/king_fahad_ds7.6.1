@@ -1,6 +1,6 @@
 <div class="card" [@focusShadow]="(isCollapsed$ | async)?'blur':'focus'">
-  <div *ngIf="(dso?.version | async)?.payload?.version !== null">
-    <div [ngStyle]="{'background-color':(versionId === dso.id) ? 'red':'#907d4f' }" [attr.title]="(versionId === dso.id ? ('search.results.current.edition' | translate): '')"   class="ribbon-2">{{dso.firstMetadataValue('dc.relation.holding') | kwareTranslate}}</div>
+  <div *ngIf="dso.firstMetadataValue('dc.relation.holding') ||  (dso?.version | async)?.payload?.version !== null">
+    <div [ngStyle]="{'background-color':((dso?.version | async)?.payload?.version !== null && versionId === dso.id) ? 'red':'#907d4f' }" [attr.title]="(versionId === dso.id ? ('search.results.current.edition' | translate): '')"   class="ribbon-2">{{dso.firstMetadataValue('dc.relation.holding') | kwareTranslate}}</div>
   </div>
   <div class="position-absolute ml-1">
       <ng-content></ng-content>
@@ -21,7 +21,7 @@
       </div>
   </span>
   <div class="card-body"[ngClass]="{'fixed-height':(isCollapsed() | async)}">
-    <div class="d-flex">
+    <div class="d-flex" style="flex-wrap: wrap;justify-content: space-between;">
       <div class="label_dage" >
         <span [attr.title]="'item.search.copyDate' | translate" class="badge badge-pill badge-info" style="background-color: rgb(106, 163, 213) !important;color: #FFF; margin-bottom: -2px;" *ngIf="dso.hasMetadata('dc.date.copy') || dso.hasMetadata('dc.date.issuedhijri')" >{{firstMetadataValue('dc.date.copy') ? firstMetadataValue('dc.date.copy') : firstMetadataValue('dc.date.issuedhijri') }}</span>
 
@@ -30,7 +30,9 @@
         <ds-access-status-badge [object]="dso" class="pl-1"></ds-access-status-badge>
      </div>
       
-      
+     <div>
+      <ds-versions-counter [item]="dso"  ></ds-versions-counter>
+     </div>
     </div>
       <ds-truncatable [id]="dso.id">
           <ds-truncatable-part [id]="dso.id" [minLines]="2" type="h4">

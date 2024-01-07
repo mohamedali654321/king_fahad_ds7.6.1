@@ -31,7 +31,9 @@ export class ItemSearchResultListElementComponent extends SearchResultListElemen
     this.showThumbnails = this.appConfig.browseBy.showThumbnails;
     this.itemPageRoute = getItemPageRoute(this.dso);
     this.linkService.resolveLink<Item>(this.dso, followLink('thumbnail')); //kware-edit
+    this.linkService.resolveLink<Item>(this.dso, followLink('version')); //kware-edit
     this.linkService.resolveLink<Item>(this.dso, followLink('relationships')); 
+
     this.relationShips=[this.dso.metadata]
   //   console.log(this.dso)
   //   // console.log(this.dso.metadata['relation.isPublicationOfJournalIssue'] ? this.dso.metadata['relation.isPublicationOfJournalIssue'].length : 0 );

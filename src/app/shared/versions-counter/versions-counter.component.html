@@ -1,0 +1,7 @@
+<div *ngIf="(countLength | async) > 0">
+    <!-- <span class="pr-2">&nbsp;</span> -->
+    <span [attr.title]="('iamges.counts' | translate)"   class="badge badge-pill badge-secondary align-self-center archived-items-lead"><i class="fa-solid fa-copy"></i>&nbsp;{{(countLength | async)}}
+          </span>
+</div>
+
+

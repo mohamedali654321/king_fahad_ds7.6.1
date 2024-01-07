@@ -323,7 +323,7 @@ import { RequestACopyComponent } from './kware-media-viewer/shared/request-a-cop
 import { ViewerPanelComponent } from './kware-media-viewer/viewer-panel/viewer-panel.component';
 import { HandleDurationTimePipe } from './kware-media-viewer/media-viewers/kware-video-player/handle-duration-time.pipe';
 import { HelpLinksComponent } from './help-links/help-links.component';
-
+import { VersionsCounterComponent } from './versions-counter/versions-counter.component';
 const MODULES = [
   CommonModule,
   FormsModule,
@@ -486,7 +486,8 @@ const COMPONENTS = [
      ViewerWrapperComponent,
      UnknownFileFormatComponent,
      RequestACopyComponent,
-     ViewerPanelComponent
+     ViewerPanelComponent,
+     VersionsCounterComponent
      /** kware end edit */
 ];
 
